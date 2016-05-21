@@ -2,7 +2,7 @@
 #define M_TF
 #include <iostream>
 #include <fstream>
-#include <string>;
+#include <string>
 using namespace std;
 class MTF
 {

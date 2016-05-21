@@ -45,17 +45,40 @@ void Arithmetic::output_bit(bool bit, int & pending)
 	}
 }
 
-void Arithmetic::compress(Model &m, string file)
+void Arithmetic::compress(Model &m, int number)
 {
+	m.reset();
+	string inf = "";
+	string outf = "";
+	
+	if (number == 0)
+	{
+		inf = "mtfEnc.txt";
+		outf = "dictEnc.bin";
+	}
+	else{
+		/*inf= "test/";
+		inf += to_string(number);
+		inf += ".txt";*/
+		inf = "mtfEnc.txt";
+
+		outf="binary/arithmeticEnc";
+		outf += to_string(number);
+		outf += ".bin";
+	}
+
+
 	string msg="";
-	std::ifstream ifs(file);
+	std::ifstream ifs(inf);
 	std::string read((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
 	msg = read;
 	//cout << msg;
 	
 	// fopen_s(p,"encoded.bin","w");
 	//cout << msg << endl;
-	outfile.open("example.bin" , ios::binary);
+	
+
+	outfile.open(outf, ios::binary);
 	char a = 254;
 	msg += a;
 	int pending_bits = 0;
@@ -150,11 +173,26 @@ void Arithmetic::compress(Model &m, string file)
 	outfile.close();
 }
 
-void Arithmetic::decompress(Model &m)
+void Arithmetic::decompress(Model &m, int number)
 {
+	m.reset();
+	string in = "", out = "";
+	if (number == 0){
+		in = "dictEnc.bin";
+		out = "dictDec.txt";
+	}
+	else{
+		in = "binary/arithmeticEnc";
+		in += to_string(number);
+		in += ".bin";
+
+		out = "decoded/arithmeticDec";
+		out += to_string(number);
+		out += ".txt";
+	}
 	
-	infile2.open("example.bin", ios::in | ios::binary);
-	outfile.open("decoded.txt" );
+	infile2.open(in, ios::in | ios::binary);
+	outfile.open(out);
 
 
 	infile2.seekg(0, ios::end);

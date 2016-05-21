@@ -1,3 +1,5 @@
+#ifndef BT
+#define BT
 #include<iostream>
 #include<fstream>
 #include<vector>
@@ -26,3 +28,4 @@ public:
 	bool cmp(pair<char, int> a, pair<char, int>b);
 	bool compareblocks(vector<vector<char>> a, vector<vector<char>> b);
 };
+#endif

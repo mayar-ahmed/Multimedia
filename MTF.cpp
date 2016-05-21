@@ -29,7 +29,7 @@ void MTF::encode(string inFile) //file taht it reads from
 		{
 			if (arr[j] == c)
 			{
-				output << j << " ";
+				output << j <<" ";
 				movetofront(j);
 				break;
 			}

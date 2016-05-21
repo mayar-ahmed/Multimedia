@@ -40,8 +40,8 @@ private:
 	
 public:
 	Arithmetic();
-	void compress(Model &m , string file);
-	void decompress(Model &m);
+	void compress(Model &m , int number);
+	void decompress(Model &m ,int number);
 	void output_bit(bool bit, int &pending);
 	void putBit(bool value);
 	void putByte(char c);
